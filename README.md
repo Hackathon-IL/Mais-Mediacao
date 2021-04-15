@@ -2,8 +2,7 @@
 
 ## PITCH
 
-
-[Link para o vídeo]("https://youtu.be/wGG-nZALO4g")
+[Link para o video](https://www.youtube.com/watch?v=wGG-nZALO4g)
 
 ## Protótipo 
 
