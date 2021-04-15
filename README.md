@@ -4,7 +4,7 @@
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wGG-nZALO4g/0.jpg)](https://www.youtube.com/watch?v=wGG-nZALO4g)
 
-[Link para o vídeo]("https://youtu.be/wGG-nZALO4g")
+[Link para o video](https://www.youtube.com/watch?v=wGG-nZALO4g)
 
 ## Protótipo 
 
@@ -16,4 +16,4 @@ O protótipo foi desenvolvido em 2 partes, um para visão de usuário geral da a
 
 ## Referências e créditos
 
-Ícones disponíveis em [FlatIcon]('http://www.flaticon.com/') e [LogoDownload]('http://logodownload.org')
+Ícones disponíveis em [FlatIcon](http://www.flaticon.com/) e [LogoDownload](http://logodownload.org)
