@@ -14,4 +14,4 @@ O protótipo foi desenvolvido em 2 partes, um para visão de usuário geral da a
 
 ## Referências e créditos
 
-Ícones disponíveis em [FlatIcon]('http://www.flaticon.com/') e [LogoDownload]('http://logodownload.org')
+Ícones disponíveis em [FlatIcon](http://www.flaticon.com/) e [LogoDownload](http://logodownload.org)
