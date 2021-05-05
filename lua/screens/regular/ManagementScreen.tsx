@@ -1,8 +1,6 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
-import { Button, TinyButton } from '../../components/CommonComponents';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { commonStyles } from '../../styles/common.styles';
-import { t } from 'i18n-js';
 import Header from "../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
@@ -12,58 +10,95 @@ export type ManagementScreenProps = {
 }
 
 export default ({ navigation }: ManagementScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
+
+  const onPressDocument = () => {
+    navigation.navigate('Document');
+  }
+
+  const onPressSupport = () => {
+    navigation.navigate('Support');
+  }
+
+  const onPressMap = () => {
+    navigation.navigate('Map');
+  }
+
+  const onPressFaq = () => {
+    navigation.navigate('Faq');
+  }
+
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title="Saúde"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
       <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
-        </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
-        </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
 
-        <View style={styles.horizontalSeparator} />
+        <TouchableOpacity
+          style={[styles.mediumCardContainer, local_styles.cardContainer]}
+          onPress={onPressDocument}
+        >
+          <Image source={require('../../assets/images/document.png')} style={local_styles.icon} />
+          <View style={local_styles.textContainer}>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Como emitir documentos de identificação </Text>
+          </View>
+        </TouchableOpacity>
 
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
+        <TouchableOpacity
+          style={[styles.mediumCardContainer, local_styles.cardContainer]}
+          onPress={onPressSupport}
+        >
+          <Image source={require('../../assets/images/support.png')} style={local_styles.icon} />
+          <View style={local_styles.textContainer}>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Apoio </Text>
+          </View>
+        </TouchableOpacity>
 
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
+        <TouchableOpacity
+          style={[styles.mediumCardContainer, local_styles.cardContainer]}
+          onPress={onPressMap}
+        >
+          <Image source={require('../../assets/images/map.png')} style={local_styles.icon} />
+          <View style={local_styles.textContainer}>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Postos de emissão de documentos próximos </Text>
+          </View>
+        </TouchableOpacity>
 
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
+        <TouchableOpacity
+          style={[styles.mediumCardContainer, local_styles.cardContainer]}
+          onPress={onPressFaq}
+        >
+          <Image source={require('../../assets/images/faq.png')} style={local_styles.icon} />
+          <View style={local_styles.textContainer}>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Dúvidas frequentes </Text>
+          </View>
+        </TouchableOpacity>
 
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
       </ScrollView>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1
+  },
+  icon: {
+    height: 50,
+    width: 50,
+  },
+  buttonText:{
+    textAlign:'center'
+  },
+  textContainer:{
+    flex:1
   }
 })
