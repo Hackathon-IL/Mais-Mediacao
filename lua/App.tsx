@@ -1,9 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import useColorScheme from './hooks/useColorScheme';
 
 import useCachedResources from './hooks/useCachedResources';
 import Navigation from './navigation';
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+import translations from './translations'
+
+i18n.translations = translations
+i18n.locale = Localization.locale;
+i18n.fallbacks = true;
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -12,9 +20,9 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
+      <SafeAreaProvider >
         <Navigation/>
-        <StatusBar />
+        <StatusBar style="light" translucent={true} />
       </SafeAreaProvider>
     );
   }
