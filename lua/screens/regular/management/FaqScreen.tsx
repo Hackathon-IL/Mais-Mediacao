@@ -7,11 +7,11 @@ import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-export type MapScreenProps = {
+export type FaqScreenProps = {
   navigation: NavigationStackProp<NavigationState, NavigationParams>
 }
 
-export default ({ navigation }: MapScreenProps) => {
+export default ({ navigation }: FaqScreenProps) => {
   const colorScheme = useColorScheme();
   const styles = commonStyles();
   return (
