@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React, { Component } from "react";
 import { createStackNavigator } from '@react-navigation/stack';
-import SampleScreen from '../screens/SampleScreen';
 import CollaboratorStack from './CollaboratorStackNavigator';
 import RegularStack from './RegularStackNavigator';
+import LoginScreen from '../screens/LoginScreen';
+import RegistrationScreen from '../screens/RegistrationScreen';
 
 
 export type MainStackParamList = {
@@ -15,12 +16,12 @@ export type MainStackParamList = {
 const MainStack = createStackNavigator<MainStackParamList>();
 
 export default () => {
-    return(
+    return (
         <MainStack.Navigator headerMode="none">
-            <MainStack.Screen name="LoginScreen" component={SampleScreen}/>
-            <MainStack.Screen name="RegistrationScreen" component={SampleScreen}/>
-            <MainStack.Screen name="CollaboratorStack" component={CollaboratorStack}/>
-            <MainStack.Screen name="UserStack" component={RegularStack}/>
+            <MainStack.Screen name="LoginScreen" component={LoginScreen} />
+            <MainStack.Screen name="RegistrationScreen" component={RegistrationScreen} />
+            <MainStack.Screen name="CollaboratorStack" component={CollaboratorStack} />
+            <MainStack.Screen name="UserStack" component={RegularStack} />
         </MainStack.Navigator>
     );
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { Text, View, ScrollView, useColorScheme } from 'react-native';
 import { Button, TinyButton } from '../components/CommonComponents';
 import { commonStyles } from '../styles/common.styles';
 import { t } from 'i18n-js';
@@ -7,11 +7,11 @@ import Header from "../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-export type SampleScreenProps = {
+export type RegistrationScreenProps = {
   navigation: NavigationStackProp<NavigationState, NavigationParams>
 }
 
-export default ({ navigation }: SampleScreenProps) => {
+export default ({ navigation }: RegistrationScreenProps) => {
   const colorScheme = useColorScheme();
   const styles = commonStyles();
   return (
@@ -62,8 +62,3 @@ export default ({ navigation }: SampleScreenProps) => {
     </View>
   );
 }
-const local_styles = StyleSheet.create({
-  mainContainer: {
-      justifyContent: 'center',
-  }
-})

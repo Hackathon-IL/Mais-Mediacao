@@ -1,7 +1,8 @@
 const translations = {
     en: {
-        settings: 'Settings',
-        
+        Theme: 'Theme',
+        light: 'light',
+        dark: 'dark'
     }
 }
 export default translations;

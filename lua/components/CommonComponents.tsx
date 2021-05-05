@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { TouchableOpacity, ViewStyle, Text, View, TextInput as TInput, useColorScheme, TextInputProps } from "react-native";
 import { commonStyles, darkColors, lightColors } from "../styles/common.styles";
 

@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   TouchableOpacity,
   View,
+  StyleSheet
 } from 'react-native';
-import { BackIcon, OptionsIcon } from './svg/IconsSvg'
+import { BackIcon, OptionsIcon } from './IconsSvg'
 import { commonStyles } from '../styles/common.styles';
 
 type HeaderProp = {
@@ -36,14 +37,14 @@ const Header = ({
         <BackIcon width={hasBackButton ? 25 : 0} />
       </TouchableOpacity>
       <View>
-        <Text style={[styles.mediumPrimaryText, { color: '#FFFFFF', textAlign: 'center' }]}>
+        <Text style={[styles.mediumPrimaryText, local_styles.title]}>
           {title}
         </Text>
         {
           subtitle !== undefined ?
-          <Text style={[styles.tinyPrimaryText, { color: '#FFFFFF', textAlign: 'center' }]}>
-          {subtitle}
-        </Text> : null
+            <Text style={[styles.tinyPrimaryText, local_styles.subTitle]}>
+              {subtitle}
+            </Text> : null
         }
 
       </View>
@@ -57,3 +58,14 @@ const Header = ({
   );
 }
 export default Header;
+
+const local_styles = StyleSheet.create({
+  title: {
+    color: '#FFFFFF',
+    fontWeight: 'bold'
+  },
+  subTitle: {
+    color: '#FFFFFF',
+    textAlign: 'center'
+  }
+})
