@@ -19,7 +19,7 @@ export default ({ navigation }: RegistrationScreenProps) => {
     return (
         <View style={styles.screen}>
             <Header
-                title={`Registro`}
+                title="Registro"
                 hasBackButton={true}
                 onBackPress={navigation.goBack}
             />
