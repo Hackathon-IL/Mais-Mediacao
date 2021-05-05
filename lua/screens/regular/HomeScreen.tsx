@@ -1,8 +1,7 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Button, TinyButton } from '../../components/CommonComponents';
 import { commonStyles } from '../../styles/common.styles';
-import { t } from 'i18n-js';
 import Header from "../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
@@ -12,58 +11,129 @@ export type HomeScreenProps = {
 }
 
 export default ({ navigation }: HomeScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
+
+  const onPressHealth = () => {
+    navigation.navigate('HealthStack');
+  }
+
+  const onPressManagement = () => {
+    navigation.navigate('ManagementStack');
+  }
+
+  const onPressEmergencialAid = () => {
+    navigation.navigate('EmergencialAidStack');
+  }
+
+  const onPressChat = () => {
+    navigation.navigate('ChatStack');
+  }
+
+  const onPressLoginPage = () => {
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
-        hasBackButton={true}
-        onBackPress={navigation.goBack}
+        title="Página Inicial"
       />
-      <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
+      <View style={[styles.contentContainer, local_styles.mainContainer]}>
+
+        <View style={local_styles.buttonsContainer}>
+          <View style={local_styles.buttonsHorizontalContainer}>
+            <TouchableOpacity onPress={onPressHealth} style={[styles.bigCardContainer, local_styles.cardContainer]}>
+              <Image
+                source={require('../../assets/images/health.png')}
+                style={local_styles.icon}
+              />
+              <Text style={[local_styles.healthText]}> Saúde </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={onPressManagement} style={[styles.bigCardContainer, local_styles.cardContainer]}>
+              <Image
+                source={require('../../assets/images/management.png')}
+                style={local_styles.icon}
+              />
+              <Text style={[local_styles.managementText]}> Administração </Text>
+            </TouchableOpacity>
+          </View >
+
+          <View style={local_styles.buttonsHorizontalContainer}>
+            <TouchableOpacity onPress={onPressEmergencialAid} style={[styles.bigCardContainer, local_styles.cardContainer]}>
+              <Image
+                source={require('../../assets/images/emergencial_aid.png')}
+                style={local_styles.icon}
+              />
+              <Text style={[local_styles.emergencialAidText]}> Auxílio emergencial </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={onPressChat} style={[styles.bigCardContainer, local_styles.cardContainer]}>
+              <Image
+                source={require('../../assets/images/chat.png')}
+                style={local_styles.icon}
+              />
+              <Text style={[local_styles.chatText]}> Chat </Text>
+            </TouchableOpacity>
+          </View >
         </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
+        
+        <View style={local_styles.logoutButtonContainer}>
+        <TinyButton text="Retornar para tela de login" onPress={onPressLoginPage} />
         </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
-        <View style={styles.horizontalSeparator} />
-
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
-      </ScrollView>
+      </View>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent:'space-evenly',
+
+  },
+  buttonsContainer: {
+    
+  },
+  logoutButtonContainer:{
+    alignItems:'center',
+  },
+  buttonsHorizontalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  cardContainer: {
+    height: 150,
+    width: 150,
+    justifyContent: 'space-evenly',
+    padding:10,
+    alignItems: 'center',
+    margin: 20
+  },
+  icon: {
+    height: 80,
+    width: 80
+  },
+  healthText:{
+    fontWeight:'bold',
+    fontSize:16,
+    textAlign:'center',
+    color:'#FF2400'
+  },
+  managementText: {
+    fontWeight:'bold',
+    fontSize:16,
+    textAlign:'center',
+    color:'#B45534'
+  },
+  emergencialAidText:{
+    fontWeight:'bold',
+    fontSize:16,
+    textAlign:'center',
+    color:'#639021'
+  },
+  chatText:{
+    fontWeight:'bold',
+    fontSize:16,
+    textAlign:'center',
+    color:'#AF8BC8'
   }
 })

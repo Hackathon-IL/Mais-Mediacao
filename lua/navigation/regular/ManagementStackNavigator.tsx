@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack'
-import SampleScreen from '../../screens/SampleScreen';
+import ManagementScreen from "../../screens/regular/ManagementScreen";
 
 export type ManagementStackNavigatorParamsList = {
-    Management: undefined
+    InitialPage: undefined
 }
 
 const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>();
@@ -11,7 +11,7 @@ const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>
 export default () => {
     return (
         <ManagementStack.Navigator headerMode="none">
-            <ManagementStack.Screen name="Management" component={SampleScreen} />
+            <ManagementStack.Screen name="InitialPage" component={ManagementScreen} />
         </ManagementStack.Navigator>
     );
 }

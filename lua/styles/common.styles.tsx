@@ -49,15 +49,12 @@ export const baseStyles = () => {
             elevation: 5,
         },
         primaryText: {
-            fontFamily: 'roboto',
             color: colorScheme.primaryText,
         },
         secondaryText: {
-            fontFamily: 'roboto',
             color: colorScheme.secondaryText,
         },
         tertiaryText: {
-            fontFamily: 'roboto',
             color: colorScheme.tertiaryText,
         }
     })
