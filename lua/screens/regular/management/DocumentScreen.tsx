@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, useColorScheme, StyleSheet, Image } from 'react-native';
 import { Button, TinyButton } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
 import { t } from 'i18n-js';
@@ -17,53 +17,57 @@ export default ({ navigation }: DocumentScreenProps) => {
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title={"Emissão de documentos"}
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
       <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
+        <View style={local_styles.contentContainer}>
+          <View style={local_styles.labelContainer}>
+            <Image source={require('../../../assets/images/immigrant.png')} style={local_styles.icon} />
+            <Text style={local_styles.labelText}>Imigrantes</Text>
+          </View>
+          <View style={styles.horizontalSeparator} />
+          <Text style={local_styles.contentText}>
+            O solicitante deve se dirigir à unidade da Polícia Federal em que haja atendimento a imigrantes da circunscrição onde esteja domiciliado. A Carteira de Registro Nacional Migratório será entregue na unidade de atendimento da Polícia Federal.  O registro consiste na identificação civil, por dados biográficos e biométricos, para obter um número de Registro Nacional Migratório (RNM) e a Carteira de Registro Nacional Migratório (CRNM).
+            O imigrante com visto temporário que tenha ingressado no País deverá proceder à solicitação de registro no prazo de noventa dias, contado da data de ingresso em território nacional. O imigrante a quem tenha sido deferido o pedido de autorização de residência no País deverá proceder à solicitação de registro no prazo de trinta dias, contado da data da publicação do deferimento do referido pedido.
+          </Text>
         </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
+        <View style={local_styles.contentContainer}>
+          <View style={local_styles.labelContainer}>
+            <Image source={require('../../../assets/images/indigenous.png')} style={local_styles.icon} />
+            <Text style={local_styles.labelText}>Indígenas</Text>
+          </View>
+          <View style={styles.horizontalSeparator} />
+          <Text style={local_styles.contentText}>
+            O indígena pode ir à Advocacia-Geral da União (AGU) ou à Fundação Nacional do Índio (Funai) e retirar o Registro Administrativo de Nascimento de Índio (Rani).          </Text>
         </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
-        <View style={styles.horizontalSeparator} />
-
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
       </ScrollView>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    height: 30,
+    width: 30,
+    marginRight: 1
+  },
+  labelText: {
+    fontSize: 14
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginTop: 5,
+    marginBottom: 10
+  },
+  contentText: {
+
+  },
+  contentContainer: {
+    padding: 10
   }
 })
