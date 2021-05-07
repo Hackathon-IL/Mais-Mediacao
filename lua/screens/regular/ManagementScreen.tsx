@@ -31,7 +31,7 @@ export default ({ navigation }: ManagementScreenProps) => {
   return (
     <View style={styles.screen}>
       <Header
-        title="Saúde"
+        title="Administração"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />

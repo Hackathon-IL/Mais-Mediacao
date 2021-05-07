@@ -27,7 +27,7 @@ export default ({ navigation }: EmergencialAidScreenProps) => {
   return (
     <View style={styles.screen}>
       <Header
-        title="Saúde"
+        title="Auxílio emergencial"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />

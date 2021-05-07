@@ -27,7 +27,7 @@ export default ({ navigation }: ChatScreenProps) => {
   return (
     <View style={styles.screen}>
       <Header
-        title="Saúde"
+        title="Chat"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
