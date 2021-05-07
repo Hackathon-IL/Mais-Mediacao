@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, useColorScheme, StyleSheet, Image } from 'react-native';
 import { Button, TinyButton } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
 import { t } from 'i18n-js';
@@ -12,58 +12,136 @@ export type SymptomScreenProps = {
 }
 
 export default ({ navigation }: SymptomScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
+
+  const symptomsList = [
+    [
+      {
+        "name": "Febre",
+        "source": require('../../../assets/images/febre.png')
+      },
+      {
+        "name": "Coriza",
+        "source": require('../../../assets/images/rinite.png')
+      }
+    ],
+    [
+      {
+        "name": "Fadiga",
+        "source": require('../../../assets/images/fadiga.png')
+      },
+      {
+        "name": "Espirros",
+        "source": require('../../../assets/images/espirrar.png')
+      }
+    ],
+    [
+      {
+        "name": "Insônia",
+        "source": require('../../../assets/images/insonia.png')
+      },
+      {
+        "name": "Vômitos",
+        "source": require('../../../assets/images/vomito.png')
+      }
+    ],
+    [
+      {
+        "name": "Diarreia",
+        "source": require('../../../assets/images/diarreia.png')
+      },
+      {
+        "name": "Cólicas",
+        "source": require('../../../assets/images/colicas.png')
+      }
+    ],
+    [
+      {
+        "name": "Perda de conciência",
+        "source": require('../../../assets/images/perda-de-consciencia.png')
+      },
+      {
+        "name": "Asma",
+        "source": require('../../../assets/images/asma.png')
+      }
+    ],
+    [
+      {
+        "name": "Dor nas juntas",
+        "source": require('../../../assets/images/joint.png')
+      },
+      {
+        "name": "Tontura",
+        "source": require('../../../assets/images/tontura.png')
+      }
+    ]
+  ]
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title="Atendimento médico por símbolos"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
       <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
-        </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
-        </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
+        <Text style={[styles.tinyPrimaryText, local_styles.labelText]}> Mostre ao seu médico as imágens dos sintomas </Text>
         <View style={styles.horizontalSeparator} />
+        <View>
+          {
+            symptomsList.map((symptoms, i) => {
+              return (
+                <View style={local_styles.cardsContainer} key={i}>
+                  {
+                    symptoms.map((symptom, j) => {
+                      return (
+                        <View style={[styles.bigCardContainer, local_styles.cardContainer]} key={j}>
+                          <Image style={local_styles.image} source={symptom.source} />
+                          <Text style={local_styles.symptomText}>{symptom.name}</Text>
+                        </View>
+                      )
+                    })
+                  }
 
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
+                </View>
+              )
+            })
+          }
+        </View>
+        <View style={styles.paddingBottomBar}/>
       </ScrollView>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  labelText: {
+    textAlign: 'center',
+    fontSize: 14,
+  },
+  image: {
+    height: 80,
+    width: 80,
+    marginBottom:10
+  },
+  cardContainer: {
+    height: 130,
+    width: 130,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:20,
+    marginRight:20
+  },
+  cardsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop:10,
+    marginBottom: 10,
+  },
+  symptomText: {
+    color: '#4671C6',
+    fontWeight: 'bold',
+    fontSize: 14
   }
 })
