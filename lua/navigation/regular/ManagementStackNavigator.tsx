@@ -5,6 +5,7 @@ import DocumentScreen from "../../screens/regular/management/DocumentScreen";
 import FaqScreen from "../../screens/regular/management/FaqScreen";
 import MapScreen from "../../screens/regular/management/MapScreen";
 import SupportScreen from "../../screens/regular/management/SupportScreen";
+import SendQuestionScreen from "../../screens/regular/management/SendQuestionScreen";
 
 export type ManagementStackNavigatorParamsList = {
     InitialPage: undefined
@@ -12,6 +13,7 @@ export type ManagementStackNavigatorParamsList = {
     Faq: undefined
     Map: undefined
     Support: undefined
+    SendQuestion: undefined
 }
 
 const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>();
@@ -24,6 +26,7 @@ export default () => {
             <ManagementStack.Screen name="Faq" component={FaqScreen} />
             <ManagementStack.Screen name="Map" component={MapScreen} />
             <ManagementStack.Screen name="Support" component={SupportScreen} />
+            <ManagementStack.Screen name="SendQuestion" component={SendQuestionScreen} />
         </ManagementStack.Navigator>
     );
 }
