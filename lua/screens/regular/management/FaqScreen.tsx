@@ -1,8 +1,7 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
-import { Button, TinyButton } from '../../../components/CommonComponents';
+import { Text, View, ScrollView, Image, StyleSheet } from 'react-native';
+import { Button } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
-import { t } from 'i18n-js';
 import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
@@ -12,58 +11,130 @@ export type FaqScreenProps = {
 }
 
 export default ({ navigation }: FaqScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
+  const questions = [
+    {
+      "title": "Como posso me cadastrar no bolsa família?",
+      "answers": [
+        {
+          "icon": require('../../../assets/images/immigrant.png'),
+          "subtitle": "Imigrantes",
+          "text": "Para entrar no programa o cidadão deve estar inscrito no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico) para participar. Além disso, os membros do grupo familiar devem atender a outros critérios estabelecidos pelo Ministério da Cidadania para serem considerados elegíveis de receber o benefício."
+        },
+        {
+          "icon": require('../../../assets/images/indigenous.png'),
+          "subtitle": "Indígenas",
+          "text": "Para entrar no programa o cidadão deve estar inscrito no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico) para participar. Além disso, os membros do grupo familiar devem atender a outros critérios estabelecidos pelo Ministério da Cidadania para serem considerados elegíveis de receber o benefício."
+        }
+      ]
+    },
+    {
+      "title": "Como posso me cadastrar no CADÚnico?",
+      "answers": [
+        {
+          "icon": require('../../../assets/images/immigrant.png'),
+          "subtitle": "Imigrantes",
+          "text": "O Cadastro Único para Programas Sociais do Governo Federal (Cadastro Único) é um instrumento que identifica e caracteriza as famílias de baixa renda. São consideradas famílias de baixa renda aquelas que possuem renda mensal por pessoa (renda per capita) de até meio salário mínimo (R $522,50) ou renda familiar total de até três salários mínimos (R $3.135,00). Para ser inserido no CadÚnico, o imigrante deverá estar legalmente no Brasil e ter pelo menos um documento, como CPF ou carteira de trabalho. Com os documentos em mãos, você pode ir até um Centro de Referência de Assistência Social – CRAS para se informar ou procurar a Prefeitura."
+        },
+        {
+          "icon": require('../../../assets/images/indigenous.png'),
+          "subtitle": "Indígenas",
+          "text": "O Cadastro Único para Programas Sociais do Governo Federal (Cadastro Único) é um instrumento que identifica e caracteriza as famílias de baixa renda. São consideradas famílias de baixa renda aquelas que possuem renda mensal por pessoa (renda per capita) de até meio salário mínimo (R $522,50) ou renda familiar total de até três salários mínimos (R $3.135,00). Para se registrar, é necessário ter a Certidão Administrativa de Nascimento do Indígena (RANI). Com os documentos de todos os integrantes da família em mãos, você pode ir até um Centro de Referência de Assistência Social – CRAS para se informar ou procurar a Prefeitura."
+        }
+      ]
+    }
+  ]
+
+  const onPressSendQuestion = () => {
+    navigation.navigate('SendQuestion');
+  }
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title="FAQ - Administração"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
-      <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
+      <View style={[styles.contentContainer, local_styles.mainContainer]}>
+        <ScrollView>
+          {
+            questions.map((question, i) => {
+              return (
+                <View key={i} style={local_styles.questionContainer}>
+                  <Text style={[styles.mediumPrimaryText, local_styles.questionTitle]}>{question.title}</Text>
+                  <View style={styles.horizontalSeparator} />
+                  {
+                    question.answers.map((answer, j) => {
+                      return (
+                        <View style={local_styles.answerContainer} key={j}>
+                          {answer.icon == null ? null :
+                            <View style={local_styles.answerTitleContainer}>
+
+                              <Image source={answer.icon} style={local_styles.answerIcon} />
+
+                              <Text style={[styles.mediumPrimaryText, local_styles.answerSubTitle]}>{answer.subtitle}</Text>
+                            </View>
+                          }
+                          <Text style={[styles.tinyPrimaryText, local_styles.answerText]}>{answer.text}</Text>
+                        </View>
+                      );
+                    })
+                  }
+                </View>
+              );
+            })
+          }
+        </ScrollView>
+        <View style={local_styles.bottomContainer}>
+          <View style={styles.horizontalSeparator} />
+          <Button
+            style={local_styles.button}
+            text="Não encontrou sua dúvida?"
+            onPress={onPressSendQuestion}
+          />
         </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
-        </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
-        <View style={styles.horizontalSeparator} />
-
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
-      </ScrollView>
+      </View>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent: 'center'
+  },
+  bottomContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 200,
+  },
+  button: {
+    width: 300
+  },
+  questionContainer: {
+    padding: 5,
+    marginBottom: 20
+  },
+  answerContainer: {
+
+  },
+  answerTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginTop: 5,
+    marginBottom: 10
+  },
+  questionTitle: {
+    fontWeight: 'bold',
+
+  },
+  answerSubTitle: {
+    fontSize: 14
+  },
+  answerText: {
+
+  },
+  answerIcon: {
+    height: 30,
+    width: 30,
+    marginRight: 10
   }
 })

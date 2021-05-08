@@ -15,7 +15,7 @@ export default ({ navigation }: SendQuestionScreenProps) => {
   return (
     <View style={styles.screen}>
       <Header
-        title={"Envie sua dúvida"}
+        title={"Envie sua dúvida - Saúde"}
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
