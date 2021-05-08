@@ -39,7 +39,7 @@ export default ({ navigation }: ChatScreenProps) => {
         >
           <Image source={require('../../assets/images/indigenous.png')} style={local_styles.icon} />
           <View style={local_styles.textContainer}>
-            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Sou indígena </Text>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Quero ajudar indígenas </Text>
           </View>
         </TouchableOpacity>
 
@@ -49,7 +49,7 @@ export default ({ navigation }: ChatScreenProps) => {
         >
           <Image source={require('../../assets/images/immigrant.png')} style={local_styles.icon} />
           <View style={local_styles.textContainer}>
-            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Sou imigrante </Text>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Quero ajudar imigrantes </Text>
           </View>
         </TouchableOpacity>
 
@@ -59,7 +59,7 @@ export default ({ navigation }: ChatScreenProps) => {
         >
           <Image source={require('../../assets/images/deaf.png')} style={local_styles.icon} />
           <View style={local_styles.textContainer}>
-            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Sou surdo </Text>
+            <Text style={[styles.mediumPrimaryText, local_styles.buttonText]}> Quero ajudar surdos </Text>
           </View>
         </TouchableOpacity>
 
