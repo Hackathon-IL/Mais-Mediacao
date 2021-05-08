@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, useColorScheme, StyleSheet, Linking } from 'react-native';
 import { Button, TinyButton } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
 import { t } from 'i18n-js';
@@ -12,58 +12,71 @@ export type TutorialScreenProps = {
 }
 
 export default ({ navigation }: TutorialScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
+
+  const PORTUGUES_LINK = 'http://blog.mds.gov.br/redesuas/wp-content/uploads/2020/04/Apoios-por-perda-de-renda-Mobile-PT.pdf'
+  const ESPANHOL_LINK = 'http://blog.mds.gov.br/redesuas/wp-content/uploads/2020/04/Apoios-por-perda-de-renda_ES.pdf'
+  const FRANCES_LINK = 'http://blog.mds.gov.br/redesuas/wp-content/uploads/2020/04/FINAL-Apoios-por-perda-de-renda-Mobile-FR.pdf'
+  const WARAO_LINK = 'http://aplicacoes.mds.gov.br/snas/midia/Apoio%20Emergencial.pdf'
+  const DAW_LINK = 'http://aplicacoes.mds.gov.br/snas/midia/Apoio%20Emergencial.pdf'
+  const BANIWA_LINK = 'https://airtable.com/embed/shrQ13JDklfbI1XDh/tbllH1EZHufyX9BPb/viwYkDJbVP5iKp4fG/recAfbzI651aZhJxH/fldel1kMW4z1BPJ33/attEB9b0rAyp3Y5tq?backgroundColor=cyan&viewControls=on'
+
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title="Como solicitar o auxílio"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
       <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
+        <View style={local_styles.contentContainer}>
+          <Text style={[styles.mediumPrimaryText, local_styles.labelText]}>
+            Cartilha {"\n"}
+           Como buscar ajuda em tempos de COVID-19
+          </Text>
+          <View style={styles.horizontalSeparator} />
+          <Button
+            text="Português" style={local_styles.button}
+            onPress={() => Linking.openURL(PORTUGUES_LINK)}
+          />
+          <Button
+            text="Espanhol" style={local_styles.button}
+            onPress={() => Linking.openURL(ESPANHOL_LINK)}
+          />
+          <Button
+            text="Francês" style={local_styles.button}
+            onPress={() => Linking.openURL(FRANCES_LINK)}
+          />
+          <Button
+            text="Warao" style={local_styles.button}
+            onPress={() => Linking.openURL(WARAO_LINK)}
+          />
+          <Button
+            text="Dâw" style={local_styles.button}
+            onPress={() => Linking.openURL(DAW_LINK)}
+          />
+          <Button
+            text="Baniwa" style={local_styles.button}
+            onPress={() => Linking.openURL(BANIWA_LINK)}
+          />
         </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
-        </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
-        <View style={styles.horizontalSeparator} />
-
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
       </ScrollView>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    justifyContent: 'center',
+  },
+  contentContainer: {
+
+  },
+  button: {
+    width: '100%'
+  },
+  labelText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center'
   }
 })
