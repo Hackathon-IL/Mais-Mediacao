@@ -29,7 +29,7 @@ export default ({ navigation }: FaqScreenProps) => {
         {
           "icon": require('../../../assets/images/immigrant.png'),
           "subtitle": "Imigrantes",
-          "text": "Para fazer o seu Cartão SUS que é gratuito, basta se dirigir a uma Unidade Básica de Saúde (UBS) mais próxima da sua residência, popularmente chamado de Posto de Saúde, ou até a Secretaria Municipal de Saúde de seu Município, portando os seg"
+          "text": "Para fazer o seu Cartão SUS que é gratuito, basta se dirigir a uma Unidade Básica de Saúde (UBS) mais próxima da sua residência, popularmente chamado de Posto de Saúde, ou até a Secretaria Municipal de Saúde de seu Município, portando os seguintes documentos pessoais: Registro Nacional Migratório (RNM) e CPF. Em alguns municípios, é solicitada a apresentação de comprovação de residência – conta de água, luz, telefone, etc."
         },
         {
           "icon": require('../../../assets/images/indigenous.png'),
@@ -71,7 +71,7 @@ export default ({ navigation }: FaqScreenProps) => {
             questions.map((question, i) => {
               return (
                 <View key={i} style={local_styles.questionContainer}>
-                  <Text style={local_styles.questionTitle}>{question.title}</Text>
+                  <Text style={[styles.mediumPrimaryText, local_styles.questionTitle]}>{question.title}</Text>
                   <View style={styles.horizontalSeparator} />
                   {
                     question.answers.map((answer, j) => {
@@ -82,10 +82,10 @@ export default ({ navigation }: FaqScreenProps) => {
 
                               <Image source={answer.icon} style={local_styles.answerIcon} />
 
-                              <Text style={local_styles.answerSubTitle}>{answer.subtitle}</Text>
+                              <Text style={[styles.mediumPrimaryText, local_styles.answerSubTitle]}>{answer.subtitle}</Text>
                             </View>
                           }
-                          <Text style={local_styles.answerText}>{answer.text}</Text>
+                          <Text style={[styles.tinyPrimaryText, local_styles.answerText]}>{answer.text}</Text>
                         </View>
                       );
                     })
@@ -133,11 +133,11 @@ const local_styles = StyleSheet.create({
     marginBottom: 10
   },
   questionTitle: {
-    fontWeight:'bold',
+    fontWeight: 'bold',
 
   },
   answerSubTitle: {
-    fontSize:14
+    fontSize: 14
   },
   answerText: {
 
