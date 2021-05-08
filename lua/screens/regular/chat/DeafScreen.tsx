@@ -1,8 +1,6 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
-import { Button, TinyButton } from '../../../components/CommonComponents';
+import { Text, View, Image, useColorScheme, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import { commonStyles } from '../../../styles/common.styles';
-import { t } from 'i18n-js';
 import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
@@ -12,58 +10,57 @@ export type DeafScreenProps = {
 }
 
 export default ({ navigation }: DeafScreenProps) => {
-  const colorScheme = useColorScheme();
   const styles = commonStyles();
   return (
     <View style={styles.screen}>
       <Header
-        title={`${t('Theme')}: ${t(colorScheme || '')}`}
+        title="Solicitação de intérprete"
         hasBackButton={true}
         onBackPress={navigation.goBack}
       />
-      <ScrollView style={styles.contentContainer}>
-        <View style={styles.bigCardContainer}>
-          <Text style={styles.mediumPrimaryText}> Big Card </Text>
+      <View style={[styles.contentContainer, local_styles.mainContainer]}>
+        <View style={local_styles.labelContainer}>
+          <Text style={styles.mediumPrimaryText}> Seu intérprete está pronto !!   </Text>
+          <View style={styles.horizontalSeparator} />
         </View>
-        <View style={styles.mediumCardContainer}>
-          <Text style={styles.smallPrimaryText}> Medium Card </Text>
-        </View>
-        <View style={[styles.smallCardContainer, { flexDirection: 'row' }]}>
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-          <View style={styles.verticalSeparator} />
-          <Text style={styles.tinyPrimaryText}> Small Card </Text>
-        </View>
-        <View style={styles.tinyCardContainer}>
-          <Text style={styles.tinyPrimaryText}> Tiny Card </Text>
-        </View>
-
-        <View style={styles.horizontalSeparator} />
-
-        <Text style={styles.bigPrimaryText}>Big primary text </Text>
-        <Text style={styles.mediumPrimaryText}>Medium primary text </Text>
-        <Text style={styles.smallPrimaryText}>Small primary text </Text>
-        <Text style={styles.tinyPrimaryText}>Tiny primary text </Text>
-
-        <Text style={styles.bigSecondaryText}>Big secondary text </Text>
-        <Text style={styles.mediumSecondaryText}>Medium secondary text </Text>
-        <Text style={styles.smallSecondaryText}>Small secondary text </Text>
-        <Text style={styles.tinySecondaryText}>Tiny secondary text </Text>
-
-        <Text style={styles.bigTertiaryText}>Big tertiary text </Text>
-        <Text style={styles.mediumTertiaryText}>Medium tertiary text </Text>
-        <Text style={styles.smallTertiaryText}>Small tertiary text </Text>
-        <Text style={styles.tinyTertiaryText}>Tiny tertiary text </Text>
-
-        <Button
-          text={"Button"}
-        />
-        <TinyButton text={"Tiny button"} />
-      </ScrollView>
+        <TouchableOpacity
+          style={[commonStyles().buttonContainer, local_styles.buttonContainer]}
+          onPress={() => Linking.openURL('http://meet.google.com/new')}
+        >
+          <Text
+            style={[commonStyles().smallPrimaryText, local_styles.buttonText]}>
+            Entrar em chamada
+          </Text>
+          <Image
+            source={require('../../../assets/images/google_meet_logo.png')}
+            style={local_styles.icon}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 const local_styles = StyleSheet.create({
   mainContainer: {
-      justifyContent: 'center',
+    padding: 15
+  },
+  labelContainer: {
+
+  },
+  buttonContainer: {
+    width: '100%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    padding:10,
+  },
+  icon: {
+    height: 32,
+    width: 28
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontFamily: 'roboto-bold',
+    fontWeight: 'bold',
+    textAlign: 'center'
   }
 })
