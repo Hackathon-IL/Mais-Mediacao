@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, Image, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Button } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
 import Header from "../../../components/Header";
@@ -30,8 +30,12 @@ export default ({ navigation }: FaqScreenProps) => {
     }
   ]
 
-  const onPressSendQuestion = () => {
-    navigation.navigate('SendQuestion');
+  const onPressAnswerQuestions = () => {
+    navigation.navigate('QuestionList');
+  }
+
+  const onPressEditAnswer = (question: any) => {
+    navigation.navigate('EditAnswer', question);
   }
   return (
     <View style={styles.screen}>
@@ -52,6 +56,7 @@ export default ({ navigation }: FaqScreenProps) => {
                     question.answers.map((answer, j) => {
                       return (
                         <View style={local_styles.answerContainer} key={j}>
+
                           {answer.icon == null ? null :
                             <View style={local_styles.answerTitleContainer}>
 
@@ -65,6 +70,12 @@ export default ({ navigation }: FaqScreenProps) => {
                       );
                     })
                   }
+                  <TouchableOpacity
+                    onPress={() => onPressEditAnswer(question)}
+                    style={local_styles.editContainer}
+                  >
+                    <Text style={[styles.tinySecondaryText, local_styles.editText]}> Editar resposta </Text>
+                  </TouchableOpacity>
                 </View>
               );
             })
@@ -74,8 +85,8 @@ export default ({ navigation }: FaqScreenProps) => {
           <View style={styles.horizontalSeparator} />
           <Button
             style={local_styles.button}
-            text="Não encontrou sua dúvida?"
-            onPress={onPressSendQuestion}
+            text="Responder dúvidas"
+            onPress={onPressAnswerQuestions}
           />
         </View>
       </View>
@@ -121,5 +132,12 @@ const local_styles = StyleSheet.create({
     height: 30,
     width: 30,
     marginRight: 10
+  },
+  editContainer: {
+    alignItems: 'flex-end',
+    marginTop: 15
+  },
+  editText: {
+    fontWeight: 'bold'
   }
 })

@@ -5,7 +5,9 @@ import DocumentScreen from "../../screens/collaborator/management/DocumentScreen
 import FaqScreen from "../../screens/collaborator/management/FaqScreen";
 import MapScreen from "../../screens/collaborator/management/MapScreen";
 import SupportScreen from "../../screens/collaborator/management/SupportScreen";
-import SendQuestionScreen from "../../screens/collaborator/management/SendQuestionScreen";
+import QuestionsListScreen from "../../screens/collaborator/management/QuestionsListScreen";
+import AnswerQuestionScreen from "../../screens/collaborator/management/AnswerQuestionScreen";
+import EditAnswerScreen from "../../screens/collaborator/management/EditAnswerScreen";
 
 export type ManagementStackNavigatorParamsList = {
     InitialPage: undefined
@@ -13,7 +15,9 @@ export type ManagementStackNavigatorParamsList = {
     Faq: undefined
     Map: undefined
     Support: undefined
-    SendQuestion: undefined
+    QuestionList: undefined
+    AnswerQuestion: undefined
+    EditAnswer: undefined
 }
 
 const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>();
@@ -26,7 +30,9 @@ export default () => {
             <ManagementStack.Screen name="Faq" component={FaqScreen} />
             <ManagementStack.Screen name="Map" component={MapScreen} />
             <ManagementStack.Screen name="Support" component={SupportScreen} />
-            <ManagementStack.Screen name="SendQuestion" component={SendQuestionScreen} />
+            <ManagementStack.Screen name="QuestionList" component={QuestionsListScreen} />
+            <ManagementStack.Screen name="AnswerQuestion" component={AnswerQuestionScreen} />
+            <ManagementStack.Screen name="EditAnswer" component={EditAnswerScreen} />
         </ManagementStack.Navigator>
     );
 }
