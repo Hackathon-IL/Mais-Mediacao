@@ -15,7 +15,7 @@ export type EmergencialAidStackNavigatorParamsList = {
     Faq: undefined
     QuestionList: undefined
     AnswerQuestion: any
-    EditAnswer: any
+    EditAnswer: { question: any }
 }
 
 const EmergencialAidStack = createStackNavigator<EmergencialAidStackNavigatorParamsList>();

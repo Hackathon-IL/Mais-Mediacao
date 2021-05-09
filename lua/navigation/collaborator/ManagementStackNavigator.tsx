@@ -17,7 +17,7 @@ export type ManagementStackNavigatorParamsList = {
     Support: undefined
     QuestionList: undefined
     AnswerQuestion: any
-    EditAnswer: any
+    EditAnswer: { question: any }
 }
 
 const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>();

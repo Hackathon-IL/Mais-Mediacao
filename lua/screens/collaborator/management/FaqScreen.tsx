@@ -50,7 +50,7 @@ export default ({ navigation }: FaqScreenProps) => {
   }
 
   const onPressEditAnswer = (question: any) => {
-    navigation.navigate('EditAnswer', question);
+    navigation.navigate('EditAnswer', { question: question });
   }
   return (
     <View style={styles.screen}>
