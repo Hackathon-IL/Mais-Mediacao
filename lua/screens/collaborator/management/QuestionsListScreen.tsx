@@ -1,17 +1,16 @@
 import React from "react";
-import { Text, View, ScrollView, useColorScheme, StyleSheet } from 'react-native';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { TinyButton } from '../../../components/CommonComponents';
 import { commonStyles } from '../../../styles/common.styles';
 import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-export type SampleScreenProps = {
+export type QuestionsListProps = {
   navigation: NavigationStackProp<NavigationState, NavigationParams>
 }
 
-export default ({ navigation }: SampleScreenProps) => {
-  const colorScheme = useColorScheme();
+export default ({ navigation }: QuestionsListProps) => {
   const styles = commonStyles();
   const questionList = [
     {

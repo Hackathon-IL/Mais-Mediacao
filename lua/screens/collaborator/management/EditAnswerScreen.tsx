@@ -6,12 +6,12 @@ import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-export type SampleScreenProps = {
+export type EditAnswerProps = {
   navigation: NavigationStackProp<NavigationState, NavigationParams>
   route: any
 }
 
-export default ({ navigation, route }: SampleScreenProps) => {
+export default ({ navigation, route }: EditAnswerProps) => {
   const styles = commonStyles();
   const [questionTitle, setQuestionTitle] = React.useState<string>('');
 

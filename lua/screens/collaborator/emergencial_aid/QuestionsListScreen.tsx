@@ -6,11 +6,11 @@ import Header from "../../../components/Header";
 import { NavigationParams, NavigationState } from 'react-navigation';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-export type SampleScreenProps = {
+export type QuestionsListProps = {
   navigation: NavigationStackProp<NavigationState, NavigationParams>
 }
 
-export default ({ navigation }: SampleScreenProps) => {
+export default ({ navigation }: QuestionsListProps) => {
   const colorScheme = useColorScheme();
   const styles = commonStyles();
   const questionList = [
