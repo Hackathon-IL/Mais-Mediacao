@@ -16,8 +16,8 @@ export type HealthStackNavigatorParamsList = {
     Map: undefined
     Symptom: undefined
     QuestionList: undefined
-    AnswerQuestion: undefined
-    EditAnswer: undefined
+    AnswerQuestion: any
+    EditAnswer: any
 }
 
 const HealthStack = createStackNavigator<HealthStackNavigatorParamsList>();

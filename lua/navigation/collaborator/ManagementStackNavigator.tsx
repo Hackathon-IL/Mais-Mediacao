@@ -16,8 +16,8 @@ export type ManagementStackNavigatorParamsList = {
     Map: undefined
     Support: undefined
     QuestionList: undefined
-    AnswerQuestion: undefined
-    EditAnswer: undefined
+    AnswerQuestion: any
+    EditAnswer: any
 }
 
 const ManagementStack = createStackNavigator<ManagementStackNavigatorParamsList>();

@@ -14,7 +14,7 @@ export type EmergencialAidStackNavigatorParamsList = {
     Map: undefined
     Faq: undefined
     QuestionList: undefined
-    AnswerQuestion: undefined
+    AnswerQuestion: any
     EditAnswer: any
 }
 
