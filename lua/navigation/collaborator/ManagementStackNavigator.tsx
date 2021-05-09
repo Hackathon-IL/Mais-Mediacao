@@ -16,7 +16,7 @@ export type ManagementStackNavigatorParamsList = {
     Map: undefined
     Support: undefined
     QuestionList: undefined
-    AnswerQuestion: any
+    AnswerQuestion: { question: any }
     EditAnswer: { question: any }
 }
 

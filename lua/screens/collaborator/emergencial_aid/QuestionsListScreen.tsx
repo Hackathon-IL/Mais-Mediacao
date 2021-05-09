@@ -29,7 +29,7 @@ export default ({ navigation }: SampleScreenProps) => {
   ]
 
   const onPressAnswer = (question: any) => {
-    navigation.navigate('AnswerQuestion', question)
+    navigation.navigate('AnswerQuestion', { question: question });
   }
   return (
     <View style={styles.screen}>
@@ -63,7 +63,8 @@ const local_styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardContainer: {
-    marginBottom: 20
+    marginBottom: 20,
+    justifyContent:'space-between'
   },
   button: {
     alignSelf: 'flex-end'

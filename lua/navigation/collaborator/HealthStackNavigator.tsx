@@ -16,7 +16,7 @@ export type HealthStackNavigatorParamsList = {
     Map: undefined
     Symptom: undefined
     QuestionList: undefined
-    AnswerQuestion: any
+    AnswerQuestion: { question: any }
     EditAnswer: { question: any }
 }
 
